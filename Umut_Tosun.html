@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Öğrenci Yıllığı</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css"><link rel="icon" href="logo.ico" type="image/x-icon">
+  <style>
+    body{background-color: skyblue;}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <table><tr><td><img src="logo.png" alt="Logo" width="70" height="70" class="d-inline-block align-text-top"></td> 
+        <td><p style="text-align: center; font-size: 25pt; margin-left: 5pt; margin-top: 10pt;"> Okul Yıllığı</p> </td></tr></table>
+         
+      
+      </a> 
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Menüyü aç">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="yearbook.html">Yıllık</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+<!-- Öğrenci Yıllığı Bölümü -->
+<div class="container my-5">
+    <div class="card shadow">
+      <div class="card-body">
+        <h2 class="card-title text-center mb-4">Öğrenci Yıllığı</h2>
+        <div class="row mb-3">
+          <div class="col-md-4 text-center">
+            <img id="photoPreview" src="Umut_Tosun.png" alt="Öğrenci Fotoğrafı" class="img-thumbnail mb-2">
+            <div>
+              <label for="photo" class="form-label">Fotoğrafınızı Yükleyin:</label>
+              <input class="form-control" type="file" id="photo">
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="mb-3">
+              <label class="form-label">İsim:</label>
+              <div class="border p-2">
+                <p id="displayName">Öğrenci Adı: Umut Tosun</p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Hobiler:</label>
+              <div class="border p-2">
+                <p id="displayHobby">Öğrenci Hobileri: Futbol oynamak ; Kumar oynamak;</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Not:</label>
+          <div class="border p-2" style="min-height: 120px;">
+            <p id="displayNote">Hüseyin Aralar = Sınıfın Cool'u Ve Uykucusu 😂 <br> </p>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Yıl Sonu Düşüncelerim:</label>
+          <div class="border p-2" style="min-height: 100px;">
+            <p id="displayThoughts">Hızlı Geçti</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Resim yüklendiğinde önizlemeyi güncelle
+    document.getElementById('photo').addEventListener('change', function(e) {
+      if(e.target.files && e.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('photoPreview').src = e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+      }
+    });
+  </script>
+  
+  <script>
+    document.getElementById('yearbookForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Form verilerini al
+      var name = document.getElementById('name').value;
+      var hobby = document.getElementById('hobby').value;
+      var note = document.getElementById('note').value;
+      var thoughts = document.getElementById('thoughts').value;
+  
+      // Verileri modal alanlarına aktar
+      document.getElementById('displayName').textContent = name;
+      document.getElementById('displayHobby').textContent = hobby;
+      document.getElementById('displayNote').textContent = note;
+      document.getElementById('displayThoughts').textContent = thoughts;
+  
+      // Modal'ı göster
+      var infoModal = new bootstrap.Modal(document.getElementById('infoModal'));
+      infoModal.show();
+    });
+  </script>
+  
+
+
+
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p> 2025 Okul Yıllığı. Tüm hakları saklıdır. H.Aralar Tarafından Hazırlanmıştır</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
